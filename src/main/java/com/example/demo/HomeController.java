@@ -37,7 +37,7 @@ public class HomeController {
     }
 
 
-    @PostMapping("/process")
+    @PostMapping("/form")
     public String processJob(@Valid Job job, BindingResult result,
                                  @RequestParam("file") MultipartFile file ){
         if(result.hasErrors()){

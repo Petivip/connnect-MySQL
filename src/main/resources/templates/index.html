@@ -29,20 +29,22 @@
 	<header th:fragment="navlink">
 		<div  class="container-fluid position-relative no-side-padding">
 
-			<a href="#" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+			<a href="#" class="logo"><img src=" https://res.cloudinary.com/dyarncgbq/image/upload/v1574713076/download_m5xhot.png" alt="Logo Image"></a>
 
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 
 			<ul class="main-menu visible-on-click" id="main-menu">
 				<li><a href="/">Home</a></li>
 				<li><a href="/form">Add Job</a></li>
-				<li><a href="#">Features</a></li>
+				<li><a href="#contact">Contact</a></li>
 			</ul><!-- main-menu -->
 
 			<div class="src-area">
-				<form>
+				<form th:action="@{/searchlist}" method="post">
 					<button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
-					<input class="src-input" type="text" placeholder="Type of search">
+					<label>
+						<input class="src-input" type="text" name="search" placeholder="Type of search">
+					</label>
 				</form>
 			</div>
 
@@ -56,7 +58,7 @@
 
 			<div class="row">
 
-				<div class="col-lg-4 col-md-6" th:each="job : ${jobs}" >
+				<div class="col-lg-4 col-md-6" th:each="job :${jobs}" >
 					<div class="card h-100">
 						<div class="single-post post-style-1">
 
@@ -66,7 +68,7 @@
 							</div>
 							</div>
 
-							<a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a>
+
 
 							<div class="blog-info">
 
@@ -74,16 +76,16 @@
 								<p th:text="${job.description}"> </p>
 
 							</div>
-							<div class="card-footer text-muted" th:inline="text"> Posted on [[${job.postedDate}]] by[[${job.author}]]</div>
+							<div class="card-footer text-muted" th:inline="text"> Posted on [[${job.postedDate}]] by [[${job.author}]]</div>
 							<div class="row">
 								<div class="col-md-4">
-									<button class="btn-primary"><a th:href="@{/update/{id}(id=${job.id})}">Update</a></button>
+									<button class="btn-primary rounded"><a th:href="@{/update/{id}(id=${job.id})}">Update</a></button>
 								</div>
 								<div class="col-md-4">
-									<button class="btn-info"><a th:href="@{/detail/{id}(id=${job.id})}">Detail</a></button>
+									<button class="btn-info rounded"><a th:href="@{/detail/{id}(id=${job.id})}">Detail</a></button>
 								</div>
 								<div class="col-md-4">
-									<button class="badge-danger"><a th:href="@{/delete/{id}(id=${job.id})}">Delete</a></button>
+									<button class="badge-danger rounded"><a th:href="@{/delete/{id}(id=${job.id})}">Delete</a></button>
 								</div>
 
 								<ul class="post-footer">
@@ -106,7 +108,7 @@
 	</section><!-- section -->
 
 
-	<footer th:fragment="foot">
+	<footer id="contact" th:fragment="foot">
 
 		<div class="container">
 			<div class="row">
@@ -114,9 +116,9 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="footer-section">
 
-						<a class="logo" href="#"><img src="images/logo.png" alt="Logo Image"></a>
-						<p class="copyright">Bona @ 2017. All rights reserved.</p>
-						<p class="copyright">Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+						<a class="logo" href="#"><img src="https://res.cloudinary.com/dyarncgbq/image/upload/v1574713076/download_m5xhot.png" alt="Logo Image"></a>
+						<p class="copyright">Copyright @ 2019. All rights reserved.</p>
+						<p class="copyright">Designed by <a href="http://petrosmelake.ga" target="_blank">Petros</a></p>
 						<ul class="icons">
 							<li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
 							<li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
@@ -132,14 +134,14 @@
 						<div class="footer-section">
 						<h4 class="title"><b>CATAGORIES</b></h4>
 						<ul>
-							<li><a href="#">BEAUTY</a></li>
+							<li><a href="#">IT</a></li>
 							<li><a href="#">HEALTH</a></li>
 							<li><a href="#">MUSIC</a></li>
 						</ul>
 						<ul>
-							<li><a href="#">SPORT</a></li>
-							<li><a href="#">DESIGN</a></li>
-							<li><a href="#">TRAVEL</a></li>
+							<li><a href="#">EDUCATION</a></li>
+							<li><a href="#">FASHION</a></li>
+							<li><a href="#">TRANSPORT</a></li>
 						</ul>
 					</div><!-- footer-section -->
 				</div><!-- col-lg-4 col-md-6 -->

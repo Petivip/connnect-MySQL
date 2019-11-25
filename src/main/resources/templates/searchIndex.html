@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Result</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+
+    <!-- Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+    <!-- Stylesheets -->
+
+    <link href="common-css/bootstrap.css" rel="stylesheet">
+
+    <link href="common-css/ionicons.css" rel="stylesheet">
+
+
+    <link href="layout-1/css/styles.css" rel="stylesheet">
+
+    <link href="layout-1/css/responsive.css" rel="stylesheet">
+
+</head>
+<body >
+
+<header th:replace="index::navlink">
+</header>
+
+<div class="slider"></div><!-- slider -->
+
+<section class="blog-area section">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6" th:each="job : ${jobs}" >
+                <div class="card h-100">
+                    <div class="single-post post-style-1">
+
+                        <div class="blog-image">
+                            <div th:if="${job.pic} != null">
+                                <img class="card-img-top" th:src="${job.pic}" alt="Card image cap" >
+                            </div>
+                        </div>
+
+                        <a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a>
+
+                        <div class="blog-info">
+
+                            <h4 class="title" th:text="${job.title}"></h4>
+                            <p th:text="${job.description}"> </p>
+
+                        </div>
+                        <div class="card-footer text-muted" th:inline="text"> Posted on [[${job.postedDate}]] by [[${job.author}]]</div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button class="btn-primary"><a th:href="@{/update/{id}(id=${job.id})}">Update</a></button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn-info"><a th:href="@{/detail/{id}(id=${job.id})}">Detail</a></button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="badge-danger"><a th:href="@{/delete/{id}(id=${job.id})}">Delete</a></button>
+                            </div>
+
+                            <ul class="post-footer">
+                                <li><a href="#"><i class="ion-heart"></i>57</a></li>
+                                <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                <li><a href="#"><i class="ion-eye"></i>138</a></li>
+                            </ul>
+
+                        </div><!-- blog-info -->
+                    </div><!-- single-post -->
+                </div><!-- card -->
+            </div><!-- col-lg-4 col-md-6 -->
+
+
+        </div><!-- row -->
+
+        <a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
+
+    </div><!-- container -->
+</section><!-- section -->
+
+
+<footer th:replace="index::foot">
+</footer>
+
+
+<!-- SCIPTS -->
+
+<script src="common-js/jquery-3.1.1.min.js"></script>
+
+<script src="common-js/tether.min.js"></script>
+
+<script src="common-js/bootstrap.js"></script>
+
+<script src="common-js/scripts.js"></script>
+
+</body>
+</html>
