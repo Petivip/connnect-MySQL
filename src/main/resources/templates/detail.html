@@ -1,79 +1,100 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Search Result</title>
+    <meta charset="UTF-8">
+    <title>Detail Page</title>
+    <!-- Custom fonts for this theme -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
-
-
-
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+    <!-- Stylesheets -->
+
+    <link href="common-css/bootstrap.css" rel="stylesheet">
+
+    <link href="common-css/ionicons.css" rel="stylesheet">
+
+
+    <link href="layout-1/css/styles.css" rel="stylesheet">
+
+    <link href="layout-1/css/responsive.css" rel="stylesheet">
+
+
+    <!-- Theme CSS -->
+
+
 </head>
-<body >
+<body>
+<header >
+    <div  class="container-fluid position-relative no-side-padding ">
 
-<header th:replace="index::navlink">
+        <a href="#" class="logo"><img src=" https://res.cloudinary.com/dyarncgbq/image/upload/v1574713076/download_m5xhot.png" alt="Logo Image"></a>
+
+        <div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+        <ul class="main-menu visible-on-click" id="main-menu">
+            <li><a style="font-weight: bold; font-size: larger" href="/">Home</a></li>
+            <li><a  style="font-weight: bold;font-size: large" href="/form">Add Job</a></li>
+            <li><a style="font-weight: bold;font-size: large" href="#contact">Contact</a></li>
+        </ul><!-- main-menu -->
+
+        <div class="src-area">
+            <form th:action="@{/searchlist}" method="post">
+                <button class="src-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                <label>
+                    <input class="src-input" type="text" name="search" placeholder="Type of search">
+                </label>
+            </form>
+        </div>
+
+    </div><!-- conatiner -->
 </header>
+<div class="container align-content-center">
 
-<div class="slider"></div><!-- slider -->
+    <div class="row">
 
-<section class="blog-area section">
-    <div class="container">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <h1 class="my-4 pt-5">Job Detail</h1>
+            <div style=" padding-left: 50px;margin-block: 0px"></div>
+            <div class="card" style="width: 38rem">
+                <img th:src="${job.pic}" class="card-img-top" alt="...">
+                <div class="card-body">
+                   <h3 th:text="${job.title}" ></h3><br />
+                    Description  : <p th:text="${job.description}" ></p><br />
+                    Posted date  : <span th:text="${job.postedDate}" ></span><br />
+                    Posted by: <span th:text="${job.author}" ></span><br /><br /><br />
 
-        <div class="row">
-
-            <div class="col-lg-4 col-md-6" >
-                <div class="card h-100">
-                    <div class="single-post post-style-1">
-                        <h1 class="card-title">Job Detail</h1>
-                            <img th:src="${job.pic}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 th:text="${job.title}" ></h3><br />
-                                Description  : <p th:text="${job.description}" ></p><br />
-                                Posted date  : <span th:text="${job.postedDate}" ></span><br />
-                                Posted by: <span th:text="${job.author}" ></span><br /><br /><br />
-
-                                <a th:href="@{/delete/{id}(id=${job.id})}" class="btn btn-primary rounded">Delete this message</a>
-                            </div>
-                        </div>
-                    </div><!-- single-post -->
-                </div><!-- card -->
-            </div><!-- col-lg-4 col-md-6 -->
-
-
-        </div><!-- row -->
-
-        <a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
-
-    </div><!-- container -->
-</section><!-- section -->
-
-
-<footer th:replace="index::foot">
-</footer>
-
-
-<!-- SCIPTS -->
+                    <a th:href="@{/delete/{id}(id=${job.id})}" class="btn btn-primary rounded">Delete this message</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="index::foot" style="margin-bottom: 1px"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+<script src="common-js/jquery-3.1.1.min.js"></script>
 
+<script src="common-js/tether.min.js"></script>
+
+<script src="common-js/bootstrap.js"></script>
+
+<script src="common-js/scripts.js"></script>
 
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
